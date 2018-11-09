@@ -1,0 +1,165 @@
+<template>
+    <div class="app-newsdet">
+        <header id="header" class="mui-bar mui-bar-nav">
+			<router-link to="" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left link"></router-link>
+            <router-link to="" @click="addLike" class="right link">
+                <span class="mui-icon-extra mui-icon-extra-like"></span>
+                <span>{{like}}</span>
+            </router-link>
+            <router-link to=""  class="right link">
+                <span class="mui-icon-extra mui-icon-extra-comment"></span>
+                <span>1</span>
+            </router-link>
+            <router-link to=""  id="icon-star" class="right link">
+                <span class="mui-icon mui-icon-star-filled"></span>
+            </router-link>
+            <router-link to=""  class="right link">
+                <span class="mui-icon-extra mui-icon-extra-share"></span>
+            </router-link>
+		</header>
+        <div v-for="(item,i) in list" :key="item.pid">
+            <div>
+                <img :src="list[0].img" v-if="i%2==0" class="img"/>
+                <p v-text="list[0].title" v-if="i%2==0" class="txt title"></p>
+            </div>
+            <p v-text="item.subtitle" v-if="i%2==0" class="txt subtitle"></p>
+            <div class="content">
+                <p v-text="item.author"  class="txt author"></p>
+                <div class="clear">
+                    <p v-text="item.content1" class="txt"></p>
+                    <img :src="item.img_detail1" class="img_det"/>
+                    <p v-text="item.content2" class="txt"></p>
+                    <img :src="item.img_detail2" class="img_det"/>
+                    <p v-text="item.content3" class="txt"></p>
+                    <img :src="item.img_detail3" class="img_det"/>
+                    <p v-text="item.content4" class="txt"></p>
+                </div>
+            </div>
+        </div>
+        <p class="copy">知乎网&nbsp;&copy;2018-知乎</p>
+    </div>
+    
+</template>
+<script>
+    export default {
+        name:'newsDetails',
+        data(){
+            return{
+                list:[],
+                like:0
+            }
+        },
+        methods:{
+            getNewsList(){
+                // console.log(this.$route.params.nid);
+                // console.log(this.nid)
+                var url="http://127.0.0.1:3008/newsdetails?nid="+this.nid;
+                this.$http.get(url).then(result=>{
+                    //console.log(result.data);
+                    this.list=result.data;
+                    //console.log(this.list);
+                    
+                })
+            },
+            addLike(){
+                this.like++;
+            }
+        },
+        created(){
+            this.getNewsList();
+        },
+        props:["nid"]
+    }
+</script>
+<style scoped>
+    .mui-bar{
+        background-color:#83ADE8;     
+    }
+    #header .link{
+        color:#fff;
+    }
+    #header>#icon-star>.mui-icon-star-filled{
+        bottom:1px;
+    }
+    .mui-icon-extra{
+        width: 50px;
+        height: 30px;
+        display: inline-block;
+        text-align: center;
+        background-clip: padding-box;
+        margin: 7px;
+        padding:5px;
+    }
+    .right{
+        float:right;
+    }
+    .mui-icon-extra-like{
+        padding:3px;
+        padding-right:0px;
+        margin-right: 0;
+    }
+    .mui-icon-extra-comment{
+        padding-right:0px;
+        padding-top:6px;
+    }
+    .mui-icon-extra-comment+span{
+        display:inline-block;
+        position: absolute;
+        bottom:8px;
+        right:70px;
+    }
+    .mui-icon-extra-share{
+        padding:4px;
+    }
+
+    p{
+        margin-top:10px;
+    }
+    .app-newsdet>div>div:nth-child(1){
+        position:relative;
+    }
+    .content{
+        padding:20px 20px 30px 20px;
+    }
+    .img{
+        width:100%;
+    }
+    .txt{
+        text-align: left;
+    }
+    .title{
+        position: absolute;
+        bottom:3px;
+        width:350px;
+        margin-left:10px;
+        color:rgb(19, 79, 85);
+        font-size:16px;
+        /* font-weight:bold; */
+    }
+    .subtitle{
+        color:#333;
+        font-size:16px;
+        margin-left: 15px;
+    }
+    .author{
+        font-size: 12px;
+        margin-bottom:0;
+    }
+    .img_det{
+        width:70%;
+    }
+    .copy{
+        font-size: 12px;
+    }
+    .content>div p,.content>div img{
+        float: left;
+    }
+    .content>div img{
+        margin-left:50px;
+    }
+    .clear::after{
+        content: "";
+        display: block;
+        clear: both;
+    }
+</style>

@@ -1,0 +1,171 @@
+<template>
+    <div id="app-setting">
+        <div class="set-title">
+            <button type="button" @click="back" class="mui-btn mui-btn-link">
+                <span class="mui-icon mui-icon-back"></span>
+                返回
+            </button>
+            <span>设置</span>
+        </div>
+        <div class="set-content">
+            <p class="content-title">常规</p>
+            <ul>
+                <li class="mui-table-view-cell">
+                    <div class="content-opt">
+                        <p class="opt-large">自动离线下载</p>
+                        <p class="opt-small">仅Wi-Fi下可用，自动下载最新内容</p>
+                    </div>
+                    <div class="mui-switch mui-switch-blue mui-switch-mini">
+                        <div class="mui-switch-handle"></div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell">
+                    <div class="content-opt">
+                        <p class="opt-large">无图模式</p>
+                        <p class="opt-small">2G/3G网络下不下载图片</p>
+                    </div>
+                    <div class="mui-switch mui-switch-blue mui-switch-mini mui-active">
+                        <div class="mui-switch-handle"></div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell">
+                    <div class="content-opt center">
+                        <p class="opt-large">大字号</p>
+                    </div>
+                    <div class="mui-switch mui-switch-blue mui-switch-mini mui-active">
+                        <div class="mui-switch-handle"></div>
+                    </div>
+                </li>
+            </ul>
+            <p class="content-title">其他</p>
+            <div class="mui-content">
+                <div class="mui-card">
+                    <ul class="mui-table-view">
+                        <li class="mui-table-view-cell">
+                            <div class="content-opt center">
+                                <p class="opt-large">推送消息</p>
+                            </div>
+                            <div class="mui-switch mui-switch-blue mui-switch-mini mui-active">
+                                <div class="mui-switch-handle"></div>
+                            </div>
+                        </li>
+                        <li class="mui-table-view-cell">
+                            <div class="content-opt center">
+                                <p class="opt-large">点评分享到微博</p>
+                            </div>
+                            <div class="mui-switch mui-switch-blue mui-switch-mini mui-active">
+                                <div class="mui-switch-handle"></div>
+                            </div>
+                        </li>
+                        <li class="mui-table-view-cell">
+                            <div class="center">
+                                <p class="opt-large">清除缓存</p>
+                            </div>
+                        </li>
+                        <li class="mui-table-view-cell">
+                            <div>
+                                <p class="opt-large">检查更新</p>
+                                <p class="opt-small">版本：2.6.6(795)</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p class="content-title">反馈</p>
+            <p class="opt-large">意见反馈</p>
+        </div>
+        <p class="bottom">登录即代表你同意<span>《知乎协议》</span></p>
+    </div>
+</template>
+<script>
+export default {
+    name:"Setting",
+    data(){
+        return{
+
+        }
+    },
+    methods:{
+        back(){
+            this.$router.push({
+                name: 'Home'
+                // params:{ id:'1'}
+            });
+        }
+    },
+    created(){
+        this.mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+		
+    }
+}
+</script>
+<style scoped>
+    .mui-card{
+        margin:0;
+        background-color: #EFEFF4;
+    }
+    .mui-table-view{
+        background-color: #EFEFF4;
+    }
+    .set-title{
+        padding:5px;
+        width:100%;
+        height:45px;
+        line-height: 37px;
+        background-color: #007aff;
+        color:#fff;
+    }
+    .set-title .mui-btn-link{
+        float: left;
+        font-size: 16px;
+        color:#fff;
+    }
+    .set-title span:nth-child(2){
+        position: relative;
+        right:7%;
+        font-size: 18px;
+    }
+    .set-content{
+        margin:10px;
+        text-align: left;
+    }
+    .set-content p{
+        color:#000;
+    }
+    .set-content>p{
+        margin-top:20px;
+    }
+    ul,li{
+        margin:0;
+        padding:0;
+    }
+    .set-content.content-title{
+        color:rgb(22, 192, 135);
+    }
+    .set-content>ul>li{
+        height:60px;
+    }
+    .center{
+        line-height: 50px;
+    }
+    .set-content>ul>li p{
+        padding:3px;
+    }
+    .content-opt{
+        width:70%;
+    }
+    .opt-large{
+        font-size: 18px;
+    }
+    .opt-small{
+        font-size: 14px; 
+    }
+    .bottom{
+        font-size: 12px;
+    }
+    .bottom>span{
+        color: #007aff;
+    }
+</style>
