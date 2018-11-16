@@ -53,7 +53,7 @@
             getNewsList(){
                 // console.log(this.$route.params.nid);
                 // console.log(this.nid)
-                var url="http://39.105.188.92:3008/newsdetails?nid="+this.nid;
+                var url="http://127.0.0.1:3008/newsdetails?nid="+this.nid;
                 this.$http.get(url).then(result=>{
                     //console.log(result.data);
                     this.list=result.data;

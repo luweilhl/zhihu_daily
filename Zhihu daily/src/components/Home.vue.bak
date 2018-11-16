@@ -104,13 +104,13 @@ export default {
   methods:{
     getImageList(){
       //获取图片轮播数据
-      var url="http://39.105.188.92:3008/carousel";
+      var url="http://127.0.0.1:3008/carousel";
       this.$http.get(url).then(result=>{
         this.img_c=result.data;
       })
     },
     getNewsList(){
-      var url="http://39.105.188.92:3008/news";
+      var url="http://127.0.0.1:3008/news";
       this.$http.get(url).then(result=>{
         this.list=result.data;     
       })

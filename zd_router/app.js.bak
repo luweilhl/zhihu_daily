@@ -7,7 +7,7 @@ const newsdetails=require("./routes/newsdetails");
 var app=express();
 app.use(bodyParse.urlencoded({extended:false}));
 app.use(cors({
-    origin:["http://39.105.188.92:3008"],
+    origin:["http://39.105.188.92:8080"],
     credentials:true
 }));
 app.listen(3008);

@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS zd;
-#创建数据库 zd
-CREATE DATABASE zd CHARSET=UTF8;
-USE zd;
+DROP DATABASE IF EXISTS zhihu_daily;
+#创建数据库 zhihu_daily
+CREATE DATABASE zhihu_daily CHARSET=UTF8;
+USE zhihu_daily;
 #创建用户名 zd_user(针对登录)  后四项为冗余列
 CREATE TABLE zd_user(
     uid INT PRIMARY KEY AUTO_INCREMENT,
